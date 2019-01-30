@@ -1,0 +1,40 @@
+.recipe_list_container {
+  padding-top: 50px; 
+}
+
+.card {
+  margin-bottom: 25px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.15);
+  }
+}
+
+.card-tag {
+  text-transform: uppercase;
+  padding: 2px 5px;
+  margin: 0 5px 5px 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  border-color: #7fc7d8;
+  background-color: #7fc7d8;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.card-footer-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25em;
+  margin-bottom: 0;
+}
+
+.card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

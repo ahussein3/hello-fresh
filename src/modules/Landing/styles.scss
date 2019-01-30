@@ -1,0 +1,30 @@
+$btn_color: #F26A55;
+
+.landing-container {
+  background-image: url("https://res.cloudinary.com/hellofresh/image/upload/c_fill,f_auto,fl_lossy,h_650,q_auto,w_1024/v1/hellofresh_website/us/cms/homepage/bannersUS/NewYear_Tablet.gif"), url("https://res.cloudinary.com/hellofresh/image/upload/c_fill,e_blur:1000,f_jpg,fl_lossy,h_65,q_auto,w_102/v1/hellofresh_website/us/cms/homepage/bannersUS/NewYear_Tablet.gif");
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 56px);
+  background-size: cover;
+}
+
+.landing-details {
+  width: 380px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 15%;
+}
+
+.link-button {
+  width: 180px;
+  height: 45px;
+  background-color: $btn_color !important;
+  border-color: $btn_color;
+
+  &:hover {
+    background-color: darken($btn_color, 0.2)
+  }
+}
