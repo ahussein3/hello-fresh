@@ -1,13 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import './RecipeList.scss';
 
 const RecipeList = props => {
-  const { recipes = [], history } = props;
-
-  const handleCard = recipeId => {
-    history.push(`/recipes/${recipeId}`);
-  };
+  const { recipes = [], deleteRecipe } = props;
 
   return (
     <div className="recipe_list_container">
@@ -18,15 +15,23 @@ const RecipeList = props => {
 
             return (
               <Col key={`${id}-${title}`} xs={12} sm={3} md={4}>
-                <Card onClick={() => handleCard(id)}>
+                <Card>
                   <Card.Img variant="top" src={photo} />
                   <Card.Body>
                     <p className="card-tag">{tags}</p>
-                    <Card.Title>{title}</Card.Title>
+                    <Card.Title>
+                      <Link to={`/recipes/${id}`}>{title}</Link>
+                    </Card.Title>
                     <Card.Text>
                       <span className="card-description">{description}</span>
                     </Card.Text>
-                    <p className="card-footer-text">{duration}</p>
+                    <div className="card-control">
+                      <p className="card-footer-text">{duration}</p>
+                      <i
+                        className="fas fa-trash-alt"
+                        onClick={() => deleteRecipe(id)}
+                      />
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>

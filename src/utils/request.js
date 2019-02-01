@@ -1,3 +1,4 @@
+import uuidv1 from 'uuid/v1';
 import RECIPES from './recipes';
 const DELAY = 1000;
 
@@ -11,8 +12,9 @@ class RecipesApi {
     return JSON.parse(recipes);
   }
 
-  static setRecipes() {
-    return localStorage.setItem('recipes', JSON.stringify(RECIPES));
+  static setRecipes(recipes) {
+    const recipesList = recipes || RECIPES;
+    return localStorage.setItem('recipes', JSON.stringify(recipesList));
   }
 
   static getAllRecipes() {
@@ -34,7 +36,47 @@ class RecipesApi {
           return resolve(Object.assign({}, recipe[0]));
         }
 
-        return reject(new Error('Could not get recipe'));
+        return reject('Could not get recipe');
+      }, DELAY);
+    });
+  }
+
+  static saveRecipe(recipe) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const recipes = this.getRecipes() || [];
+
+        if (recipe.id) {
+          const existingRecipeIndex = recipes.findIndex(
+            a => a.id === recipe.id
+          );
+          recipes.splice(existingRecipeIndex, 1, recipe);
+        } else {
+          //Just simulating creation here.
+          //The server would generate ids new recipes in a real app.
+          recipe.id = uuidv1();
+          recipes.push(recipe);
+        }
+
+        this.setRecipes(recipes);
+
+        resolve(Object.assign({}, recipe));
+      }, DELAY);
+    });
+  }
+
+  static deleteRecipe(recipeId) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const recipes = this.getRecipes() || [];
+
+        const indexOfRecipeToDelete = recipes.findIndex(recipe => {
+          return recipe.id === recipeId;
+        });
+        recipes.splice(indexOfRecipeToDelete, 1);
+
+        this.setRecipes(recipes);
+        resolve();
       }, DELAY);
     });
   }

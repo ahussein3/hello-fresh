@@ -24,6 +24,13 @@ function refreshRecipe() {
   };
 }
 
+function removeRecipe(recipeId) {
+  return {
+    type: actions.DELETE_RECIPE,
+    recipeId
+  };
+}
+
 // Define thunks for API calls
 export function loadRecipes() {
   return dispatch => {
@@ -51,4 +58,16 @@ export function loadRecipe(recipeId) {
 
 export function refresh() {
   return dispatch => dispatch(refreshRecipe());
+}
+
+export function saveRecipe(data) {
+  return () => Api.saveRecipe(data);
+}
+
+export function deleteRecipe(id) {
+  return dispatch => {
+    Api.deleteRecipe(id).then(() => {
+      dispatch(removeRecipe(id));
+    });
+  };
 }

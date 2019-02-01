@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import './ViewRecipe.scss';
 
 const ViewRecipe = props => {
@@ -10,7 +11,8 @@ const ViewRecipe = props => {
     tags,
     description,
     ingredients = [],
-    instructions = []
+    instructions = [],
+    id
   } = recipe || {};
 
   return (
@@ -20,7 +22,12 @@ const ViewRecipe = props => {
       </div>
       <div className="details-container">
         <div className="recipe-details">
-          <h1>{title}</h1>
+          <div className="title-control">
+            <h1>{title}</h1>
+            <Link to={`/recipes/${id}/edit`}>
+              <i className="fas fa-edit" />
+            </Link>
+          </div>
           <div className="recipe-tag">{tags}</div>
           <p>{description}</p>
           {ingredients.length > 0 && (

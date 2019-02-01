@@ -13,8 +13,18 @@ const routes = [
   },
   {
     path: '/recipes/:recipeId',
-    exact: false,
+    exact: true,
     component: () => getAsyncComponent(() => import('./pages/View'))
+  },
+  {
+    path: '/recipes/:recipeId/edit',
+    exact: true,
+    component: () => getAsyncComponent(() => import('./pages/Edit'))
+  },
+  {
+    path: '/create',
+    exact: true,
+    component: () => getAsyncComponent(() => import('./pages/Create'))
   }
 ];
 

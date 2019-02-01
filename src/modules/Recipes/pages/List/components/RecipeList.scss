@@ -38,3 +38,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.card-control {
+  display: flex;
+  justify-content: space-between;
+}

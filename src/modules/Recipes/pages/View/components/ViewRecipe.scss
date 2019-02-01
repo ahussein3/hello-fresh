@@ -26,6 +26,15 @@
   border: 1px solid #f7f6f4;
 }
 
+.title-control {
+  display: flex;
+  justify-content: space-between;
+
+  i {
+    cursor: pointer;
+  }
+}
+
 .recipe-tag {
   text-transform: uppercase;
   padding: 2px 5px;

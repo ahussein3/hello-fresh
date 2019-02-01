@@ -39,6 +39,14 @@ const recipesReducer = (state = initialState, action) => {
       };
     }
 
+    case actions.DELETE_RECIPE: {
+      const { recipeId } = action;
+      return {
+        ...state,
+        recipes: state.recipes.filter(recipe => recipe.id !== recipeId)
+      };
+    }
+
     default:
       return state;
   }

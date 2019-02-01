@@ -15,8 +15,7 @@ const WrappedNavbar = () => {
         />
       </Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
+        <Nav.Link href="/create">Create</Nav.Link>
       </Nav>
       <LinkedText to="/recipes">
         <Button variant="danger">View Recipes</Button>
